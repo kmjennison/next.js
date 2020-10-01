@@ -1,3 +1,5 @@
 !/yarn.lock
 .env.production
 .vercel
+.yalc
+yalc.lock

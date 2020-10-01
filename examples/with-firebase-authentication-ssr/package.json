@@ -12,6 +12,7 @@
     "firebase-admin": "^9.2.0",
     "lodash": "4.17.20",
     "next": "9.5.3",
+    "next-firebase-auth": "file:.yalc/next-firebase-auth",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-firebaseui": "4.1.0",

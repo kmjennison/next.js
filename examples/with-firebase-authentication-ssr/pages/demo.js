@@ -1,9 +1,22 @@
 import Link from 'next/link'
-import useAuthUser from 'utils/auth/useAuthUser'
-import withAuthComponent from 'utils/auth/withAuthComponent'
-import withAuthServerSideProps from 'utils/auth/withAuthServerSideProps'
+import {
+  init as initAuth,
+  useAuthUser,
+  withAuthUser,
+  withAuthUserTokenSSR,
+} from 'next-firebase-auth'
 
-const ExampleTwo = (props) => {
+const isServerSide = typeof window === 'undefined'
+initAuth({
+  onAuthStateChanged: () => {}, // TODO
+  authRequiredRedirectURL: '/auth',
+  appRedirectURL: '/demo',
+  // Don't set the Firebase admin config on the client side.
+  ...(isServerSide && { firebaseAdminInitConfig: { some: 'stuff' } }), // TODO
+  firebaseClientInitConfig: {}, // TODO
+})
+
+const Demo = (props) => {
   const AuthUser = useAuthUser()
   return (
     <div>
@@ -32,6 +45,6 @@ const ExampleTwo = (props) => {
   )
 }
 
-export const getServerSideProps = withAuthServerSideProps()()
+export const getServerSideProps = withAuthUserTokenSSR()()
 
-export default withAuthComponent({ authRequired: false })(ExampleTwo)
+export default withAuthUser({ authRequired: false })(Demo)

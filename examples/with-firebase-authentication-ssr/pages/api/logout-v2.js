@@ -1,7 +1,7 @@
 import { unsetAuthCookies } from 'next-firebase-auth'
 
 const handler = async (req, res) => {
-  await unsetAuthCookies(req)
+  await unsetAuthCookies(req, res)
   res.status(200).json({ status: true })
 }
 

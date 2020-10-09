@@ -8,6 +8,7 @@ import {
 
 const isServerSide = typeof window === 'undefined'
 initAuth({
+  debug: false,
   // onAuthStateChanged: () => {},
   // authRequiredRedirectURL: '/auth',
   // appRedirectURL: '/demo',
